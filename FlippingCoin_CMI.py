@@ -1,16 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import torch
 import torchvision
 import torchvision.transforms as transforms
-#from model import *
 import torch.optim as optim
-#import autograd_hacks
-#from utils import * 
 import torch.nn.functional as F
 from itertools import chain
 from tqdm import trange
@@ -105,10 +96,5 @@ plt.hist(d['activations'], color = 'green', edgecolor = 'black',
          bins = int(500))
 plt.xlabel('theta')
 plt.tight_layout()
-
-
-# In[ ]:
-
-
 
 
