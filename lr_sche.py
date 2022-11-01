@@ -14,7 +14,6 @@ import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 from torch.autograd import Variable
 
-from utils.wideresnet import WideResNet
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
