@@ -33,29 +33,12 @@ parser.add_argument('-b', '--batch-size', default=128, type=int,
                     help='mini-batch size (default: 128)')
 parser.add_argument('--lr', '--learning-rate', default=0.1, type=float,
                     help='initial learning rate')
-# model specs
-parser.add_argument('--layers', default=28, type=int,
-                    help='total number of layers (default: 28)')
-parser.add_argument('--widen-factor', default=10, type=int,
-                    help='widen factor (default: 10)')
-parser.add_argument('--droprate', default=0.3, type=float,
-                    help='dropout probability')
-# logging specs
-parser.add_argument('--print-freq', '-p', default=10, type=int,
-                    help='print frequency (default: 10)')
-parser.add_argument('--resume', default='', type=str,
-                    help='path to latest checkpoint (default: none)')
-parser.add_argument('--name', default='WideResNet-28-10', type=str,
-                    help='name of experiment')
-parser.add_argument('--tensorboard',
-                    help='Log progress to TensorBoard', action='store_true')
 
-best_acc1 = 0
 
 def main():
-    global args, best_acc1
+    global args
     args = parser.parse_args()
-    if args.tensorboard: configure("runs/%s"%(args.name))
+    #if args.tensorboard: configure("runs/%s"%(args.name))
 
     # data loading
     train_transform = transforms.Compose([
