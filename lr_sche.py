@@ -41,23 +41,14 @@ def main():
     #if args.tensorboard: configure("runs/%s"%(args.name))
 
     # data loading
-    train_transform = transforms.Compose([
-      transforms.ToTensor(),
-      transforms.Lambda(lambda x: F.pad(x.unsqueeze(0), (4,4,4,4),mode='reflect').squeeze()),
-        transforms.ToPILImage(),
-        transforms.RandomCrop(32),
-        transforms.RandomHorizontalFlip(),
-        transforms.ToTensor(),
-        transforms.Normalize([0.5071, 0.4865, 0.4409], [0.2673, 0.2564, 0.2762])
-        ])
-    test_transform = transforms.Compose([
+    data_transform = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize([0.5071, 0.4865, 0.4409], [0.2673, 0.2564, 0.2762])
         ])
 
-    train_loader = DataLoader(datasets.__dict__[args.dataset.upper()](root='./data', train=True, transform=train_transform, download=True),
+    train_loader = DataLoader(datasets.__dict__[args.dataset.upper()](root='./data', train=True, transform=data_transform, download=True),
         batch_size=args.batch_size, shuffle=True, num_workers=16, pin_memory=True)
-    val_loader = DataLoader(datasets.__dict__[args.dataset.upper()](root='./data', train=False, transform=test_transform, download=True),
+    val_loader = DataLoader(datasets.__dict__[args.dataset.upper()](root='./data', train=False, transform=data_transform, download=True),
         batch_size=args.batch_size, shuffle=False, num_workers=16, pin_memory=True)
 
  
