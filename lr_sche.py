@@ -70,12 +70,13 @@ def main():
     lr_list = []
     torch.save( lr_list, './runs/save_data/lr_sche.pt' )
     for epoch in range(args.start_epoch, args.epochs):
-        progress = tqdm(train_loader)
+        #progress = tqdm(train_loader)
         if (epoch+1) in [1, 2, 5, 10, 25, 50, 75, 100, 150, 200]:
             lr = scheduler.get_last_lr()
             lr_list.append( lr )
             print(epoch+1, lr, 'lr')
-        for input, target in progress:
+        #for input, target in progress:
+        for idx in range(len( train_loader )):
             scheduler.step()
     
     torch.save( lr_list, './runs/save_data/lr_sche.pt' )
